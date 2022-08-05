@@ -1,0 +1,91 @@
+:root {
+    --accent-color: #2196f3;
+    --text-color-p: #524949; /*text color */
+    --text-color-h: #16018d; /*header color */
+    --text-color-hover: #ffffff;
+    --bg-color-section: #ffffff;
+    --bg-color-btn: #16018d;
+    --text-color-btn: #fdf90f;
+    --bg-color-btn-hover: #fdf90f;
+    --text-color-btn-hover: #16018d;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.17;
+    color: var(--text-color-p);
+    background-color: var(--bg-color-section);
+}
+.container {
+    padding: 0 15px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section {
+    margin: 0 auto;
+    background-color: var(--bg-color-section);
+}
+.section__title {
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding-left: 50px;
+    width: 100%;
+    color: var(--text-color-h);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.17;
+    text-align: left;
+    letter-spacing: 0.03em;
+}
+.wrapper {
+    width: 1200px;
+    height: 100%;
+    border: 1px solid black;
+    margin: auto;
+    background-color: rgb(194, 194, 252);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.burger {
+    display: flex;
+    width: 100px;
+    height: 45px;
+    border-radius: 2%;
+    font-size: 30px;
+}
+
+#toppings_button {
+    display: flex;
+    justify-content: space-around;
+}
+
+.topp_btn {
+    width: 100px;
+    height: 45px;
+    border-radius: 2%;
+    font-size: 16px;
+}
+
+#counter {
+    display: flex;
+    justify-content: space-around;
+}
+
+.counter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 200px;
+    height: 50px;
+    border-radius: 2%;
+    border: 1px solid blue;
+}
+
+#counter__price {
+    font-size: 18px;
+}

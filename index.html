@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamburger</title>
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+
+</head>
+
+<body>
+  <section class="section">
+
+    <div class="conteiner" id="wrapper">
+      <div class="first_boxe" id="first_boxe">
+        <h1>Оберить розмір гамбургеру</h1>
+        <div class="buttons">
+          <button class="burger" id="small_burger">S</button>
+          <button class="burger" id="middle_burger">M</button>
+          <button class="burger" id="large_burger">L</button>
+        </div>
+      </div>
+      <div class="second_boxe vision" id="second_boxe">
+        <h2>Що хочете додати?</h2>
+        <div class="toppings_button" id="toppings_button">
+          <button id="add_cheese" class="topp_btn">Add cheese</button>
+          <button id="add_salad" class="topp_btn">Add salad</button>
+          <button id="add_potato" class="topp_btn">Add potato</button>
+          <button id="add_dressing" class="topp_btn">Add dressing</button>
+          <button id="add_mayo" class="topp_btn">Add mayo</button>
+        </div>
+
+        <div id="counter">
+          <div id="counter__price" class="counter">
+            <p>Price with toppings:</p>
+            <p id="total_price"></p>
+          </div>
+          <div id="counter__cal" class="counter">
+            <p>Callories with toppings:</p>
+            <p id="total_cal"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="./js/index.js" type="module"></script>
+</body>
+
+</html>
