@@ -1,17 +1,3 @@
-const book = {
-  title: "The Last Kingdom",
-  author: "Bernard Cornwell",
-  rating: 8.38,
-};
-const keys = Object.keys(book);
-console.log(keys); // ['title', 'author', 'rating']
-
-const values = Object.values(book);
-console.log(values); 
-console.log(book.title); 
-
-
-
 const DB = {
   stuffing: {
     STUFFING_SALAD: {
@@ -65,6 +51,13 @@ const DB = {
 //     this.price = name.price;
 //     this.calories = name.calories;
 //     this.stuffing = stuffing;
+
+// this.sizes = {
+        //   S: 200,
+        //   L: 300,
+        //   M: 400,
+        // };
+        // this.sizes= DB.sizes;
 //   }
 // }
 class Hamburger {
@@ -73,12 +66,7 @@ class Hamburger {
   static sizes = DB.sizes;
 
   constructor(stuffings, size) {
-        // this.sizes = {
-        //   S: 200,
-        //   L: 300,
-        //   M: 400,
-        // };
-        // this.sizes= DB.sizes;
+        
         this.stuffings = stuffings;
         this.size = size;
         this.toppings = [];//щоб використати набор добавок в 1 гамбургері 
@@ -125,7 +113,7 @@ class Hamburger {
 
   // getStuffing - геттер, має повернути this.toppings = [....]
   getStuffing() {
-    return this.toppings; 
+       return this.toppings; 
   }
   getPrice(elem) {
 
@@ -171,7 +159,7 @@ class Hamburger {
   }
 
 }
-
+/*
 console.log("Hamburger -> ", Hamburger);
 console.log("Hamburger stuffings-> ",Hamburger.stuffings);
 console.log("Hamburger STUFFING_SALAD -> ", Hamburger.stuffings.STUFFING_SALAD);
@@ -188,22 +176,118 @@ burger.addTopping(Hamburger.stuffings.STUFFING_SALAD.type);//передаю ти
 
 console.log('burger stuffings ->', burger.getStuffing());//
 
-burger.getPrice('STUFFING_SALAD');
-console.log("getPrice -> ", );
-console.log("getPrice -> ", burger.getPrice('STUFFING_2'));
+//burger.getPrice('STUFFING_SALAD');
+//помилка приватний метод недоступний ыншому класу
+//console.log("getPrice -> ", burger.getPrice('STUFFING_2'));
 
-burger.addTopping('STUFFING_POTATO','STUFFING_SALAD', "222");
-
+burger.addTopping('STUFFING_POTATO', 'STUFFING_SALAD');
+//burger.addTopping( "222");
 console.log(burger);
-
+console.log('burger stuffings ->', burger.getStuffing());//
 console.log('burger removeTopping ->', burger.removeTopping('STUFFING_SALAD'));//
 console.log("burger.calculateCalories = ",burger.calculateCalories());
 console.log("burger.calculatePrice = ",burger.calculatePrice());
+*/
+const burger = new Hamburger();
+const refs = {
+  burgerSize: document.querySelector('.checkbox-variant'),
+  selectTopping1: document.querySelector(".topping-select-1"),
+  textToppingOutput1: document.querySelector(".box__topping--name-1"),
+  valueToppingOutputPrice1: document.querySelector(".box__info--price-1"),
+
+selectTopping2: document.querySelector(".topping-select-2"),
+  textToppingOutput2: document.querySelector(".box__topping--name-2"),
+  valueToppingOutputPrice2: document.querySelector(".box__info--price-2"),
+
+  // valueToppingOutput2: document.querySelector(".topping-value-output .select2"),
+  burgerTotalPrice: document.querySelector("#burgerTotalPrice"),
+  burgerTotalCalories: document.querySelector("#burgerEnergy"),
+  
+}
+
+const TotalPrice = 0;
+const TotalCalories = 0;
+
+//обираємо розмір гамбургеру
+
+refs.burgerSize.addEventListener('change', onChoiceBurgerSize);
+
+function onChoiceBurgerSize() {
+  document.querySelector('.box__info').classList.add('visibility');
+  
+    if (document.querySelector('#S').checked == true) {
+      burger.addSize('S');
+      console.log(burger.size);
+      
+    }
+    else if (document.querySelector('#M').checked == true) {
+      burger.addSize('M');
+     
+    }
+    else if (document.querySelector('#L').checked == true) {
+      burger.addSize('L');
+      
+    }
+    else {
+      document.querySelector('.box__info--size').textContent = "null";
+    }
+     document.querySelector('.box__info--size').textContent = burger.size;
+     
+  console.log(burger.getPriceSize());
+     
+  }
 
 
-// пример написания подсчета стоимости закза
-// const orderBtn = document.querySelector(".order-btn");
-// orderBtn.addEventListener("click", () => {
-//   hamburger.createHamburger();
-//   hamburger.countAll();
-// });
+//обираємо розмір гамбургеру
+
+// setOutputTopping();
+
+refs.selectTopping1.addEventListener("change", setOutputTopping1);
+refs.selectTopping2.addEventListener("change", setOutputTopping2);
+
+function setOutputTopping1() {
+  document.querySelector('.box__info--topping').classList.add('visibility');
+  // const selectedOptionValue = refs.selectTopping1.value;
+  const selectedOptionIndex = refs.selectTopping1.selectedIndex;
+  const selectedOptionText = refs.selectTopping1.options[selectedOptionIndex].text;
+
+  refs.textToppingOutput1.textContent = selectedOptionText;
+  // refs.valueToppingOutput1.textContent = selectedOptionValue;
+
+  if (Object.keys(Hamburger.stuffings).includes(selectedOptionText) ){
+    console.log(Hamburger.stuffings[selectedOptionText].price);
+     refs.valueToppingOutputPrice1.textContent = Hamburger.stuffings[selectedOptionText].price;
+   }
+  else {
+      refs.valueToppingOutputPrice1.textContent = "error! Немає такої добавки" 
+  }
+  burger.addTopping(selectedOptionText);
+  console.log(burger.toppings);
+  }
+function setOutputTopping2() {
+  document.querySelector('.box__info--topping').classList.add('visibility');
+  // const selectedOptionValue = refs.selectTopping2.value;
+  const selectedOptionIndex = refs.selectTopping2.selectedIndex;
+  const selectedOptionText = refs.selectTopping2.options[selectedOptionIndex].text;
+
+  refs.textToppingOutput2.textContent = selectedOptionText;
+  // refs.valueToppingOutput2.textContent = selectedOptionValue;
+
+  if (Object.keys(Hamburger.stuffings).includes(selectedOptionText) ){
+    console.log(Hamburger.stuffings[selectedOptionText].price);
+     refs.valueToppingOutputPrice2.textContent = Hamburger.stuffings[selectedOptionText].price;
+   
+   
+  }
+  else {
+      refs.valueToppingOutputPrice2.textContent = "error! Немає такої добавки" 
+  }
+  burger.addTopping(selectedOptionText);
+  console.log(burger.toppings);
+  }
+
+
+ refs.burgerTotalPrice.textContent = burger.calculatePrice();
+
+console.log(burger.calculatePrice());
+refs.burgerTotalCalories.textContent = burger.calculateCalories();

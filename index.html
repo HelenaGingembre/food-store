@@ -13,37 +13,65 @@
 
 <body>
   <section class="section">
-
     <div class="conteiner" id="wrapper">
-      <div class="first_boxe" id="first_boxe">
-        <h1>Оберить розмір гамбургеру</h1>
-        <div class="buttons">
-          <button class="burger" id="small_burger">S</button>
-          <button class="burger" id="middle_burger">M</button>
-          <button class="burger" id="large_burger">L</button>
-        </div>
-      </div>
-      <div class="second_boxe vision" id="second_boxe">
-        <h2>Що хочете додати?</h2>
-        <div class="toppings_button" id="toppings_button">
-          <button id="add_cheese" class="topp_btn">Add cheese</button>
-          <button id="add_salad" class="topp_btn">Add salad</button>
-          <button id="add_potato" class="topp_btn">Add potato</button>
-          <button id="add_dressing" class="topp_btn">Add dressing</button>
-          <button id="add_mayo" class="topp_btn">Add mayo</button>
+      <h1 class="section__title">Додаток вибору гамбургеру</h1>
+      <form action="" id="form">
+          <div class="boxes">
+              <div class="box" id="first_box">
+                  <h2 class="box__title">Оберить розмір гамбургеру</h2>
+                  <div id="burgerSize" class="checkbox-variant">
+                    <input class="size" type="radio" name="size" id="S">S<br>
+                    <input class="size" type="radio" name="size" id="M">M<br>
+                    <input class="size" type="radio" name="size" id="L">L<br>
+                  </div>
+                  <div class="box__info">
+                    <p>Ви обрали Гамбургер  <span class="box__info--size"></span> розміру</p>
+                  </div>
+              </div>
+              <div class="box" id="second_box">
+                  <h2 class="box__title">Що хочете додати?</h2>
+                  <div class="toppings" id="toppings">
+                          <select class="topping-select-1">
+                            <option value="STUFFING_SALAD">STUFFING_SALAD</option>
+                            <option value="STUFFING_POTATO">STUFFING_POTATO</option>
+                            <option value="TOPPING_MAYO">TOPPING_MAYO</option>
+                            <option value="TOPPING_SPICE">TOPPING_SPICE</option>
+                          </select>
+                          <select class="topping-select-2">
+                            <option value="STUFFING_SALAD2">STUFFING_SALAD</option>
+                            <option value="STUFFING_POTATO2">STUFFING_POTATO</option>
+                            <option value="TOPPING_MAYO2">TOPPING_MAYO</option>
+                            <option value="TOPPING_SPICE2">TOPPING_SPICE</option>
+                          </select>
+                  </div>
+                  <div class="box__info--topping ">
+                    <p>начинка <span class="box__topping--name-1"></span>
+                      -<span class="box__info--price-1"></span> грн</p>
+                     
+                      <!-- <p class="box__info">
+                        Selected option value: <span class="topping-value-output"></span>
+                      <p> -->
+
+                        <p>начинка <span class="box__topping--name-2"></span>
+                          -<span class="box__info--price-2"></span> грн</p>
+                  </div>
+              </div>
+          </div>
+        <div class="boxes" id="counter">
+            <div id="counter__price" class="counter">
+                <p>Вартість вашого гамбургеру:</p>
+                <span id="burgerTotalPrice"></span><span>грн</span>
+                
+            </div>
+            <div id="counter__cal" class="counter">
+                <p>Всього   калорій:</p>
+                <span id="burgerEnergy"></span><span> ккал</span>
+            </div>
         </div>
 
-        <div id="counter">
-          <div id="counter__price" class="counter">
-            <p>Price with toppings:</p>
-            <p id="total_price"></p>
-          </div>
-          <div id="counter__cal" class="counter">
-            <p>Callories with toppings:</p>
-            <p id="total_cal"></p>
-          </div>
-        </div>
-      </div>
+        <button type="submit" class="btn order-btn" 
+        id="burgerValue" onclick="OrderHamburger()">Замовити Гамбургер</button>
+      </form>
     </div>
   </section>
 
