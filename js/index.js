@@ -185,9 +185,10 @@ burger.addTopping('STUFFING_POTATO', 'STUFFING_SALAD');
 console.log(burger);
 console.log('burger stuffings ->', burger.getStuffing());//
 console.log('burger removeTopping ->', burger.removeTopping('STUFFING_SALAD'));//
-console.log("burger.calculateCalories = ",burger.calculateCalories());
-console.log("burger.calculatePrice = ",burger.calculatePrice());
+console.log("burger.calculateCalories = ", burger.calculateCalories());
+console.log("burger.calculatePrice = ", burger.calculatePrice());
 */
+
 const burger = new Hamburger();
 const refs = {
   burgerSize: document.querySelector('.checkbox-variant'),
@@ -202,11 +203,9 @@ selectTopping2: document.querySelector(".topping-select-2"),
   // valueToppingOutput2: document.querySelector(".topping-value-output .select2"),
   burgerTotalPrice: document.querySelector("#burgerTotalPrice"),
   burgerTotalCalories: document.querySelector("#burgerEnergy"),
-  
+  TotalPrice: 0,
 }
 
-const TotalPrice = 0;
-const TotalCalories = 0;
 
 //обираємо розмір гамбургеру
 
@@ -214,27 +213,31 @@ refs.burgerSize.addEventListener('change', onChoiceBurgerSize);
 
 function onChoiceBurgerSize() {
   document.querySelector('.box__info').classList.add('visibility');
-  
+  let result=0;
     if (document.querySelector('#S').checked == true) {
-      burger.addSize('S');
+      result=burger.addSize('S');
       console.log(burger.size);
       
     }
     else if (document.querySelector('#M').checked == true) {
-      burger.addSize('M');
+      result=burger.addSize('M');
      
     }
     else if (document.querySelector('#L').checked == true) {
-      burger.addSize('L');
+      result=burger.addSize('L');
       
     }
     else {
       document.querySelector('.box__info--size').textContent = "null";
     }
      document.querySelector('.box__info--size').textContent = burger.size;
-     
-  console.log(burger.getPriceSize());
-     
+  // result = document.querySelector('.box__info--size').textContent;
+  console.log('burger.size ', burger.size);//L
+  // TotalPrice = Hamburger.sizes[burger.size];
+  // console.log('Hamburger.size ',TotalPrice);
+  console.log('Hamburger.size ',Hamburger.sizes[burger.size]);
+  onCalculatePrice();
+    
   }
 
 
@@ -284,10 +287,19 @@ function setOutputTopping2() {
   }
   burger.addTopping(selectedOptionText);
   console.log(burger.toppings);
-  }
+}
+ 
+function onCalculatePrice() {
+  
+  return Hamburger.sizes[burger.size];
+}
 
-
- refs.burgerTotalPrice.textContent = burger.calculatePrice();
+console.log(Hamburger.sizes[burger.size]);
+console.log(burger.toppings);
+console.log('burger stuffings ->', burger.getStuffing());
+console.log('burger stuffings ->', burger.addSize(burger.size));
+ refs.burgerTotalPrice.textContent =  burger.calculatePrice();
+// refs.burgerTotalPrice.textContent = 5555;
 
 console.log(burger.calculatePrice());
-refs.burgerTotalCalories.textContent = burger.calculateCalories();
+refs.burgerTotalCalories.textContent =2;
