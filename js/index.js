@@ -189,6 +189,75 @@ console.log("burger.calculateCalories = ", burger.calculateCalories());
 console.log("burger.calculatePrice = ", burger.calculatePrice());
 */
 
+
+const formCreateBurger = document.querySelector(".form-burger");
+formCreateBurger.addEventListener("submit", onCreateNewBurger);
+
+function onCreateNewBurger(event) {
+  event.preventDefault();
+  //const newBurger = {};
+  const newBurger = new Hamburger();
+
+  console.log('перевірка = створено гамбургер');
+  // const formData = new FormData(event.target);
+
+  // formData.forEach((value, name) => (newBurger[size] = value));
+  // newBurger.stuffings = [];
+
+  
+//обнуляємо форму після підтвердження замовлення гамбургеру
+  event.target.reset();
+  
+}
+
+//1.Створення і рендер розмітки по данных  класу Humburger 
+const infoHamburgersContainer = document.querySelector('.toppings');
+
+function createInfoHamburgersTemplate(item, index) {
+
+        const template = `<div class="box__info--topping ">
+                    <p>
+                    <span class="box__topping--name">${item.type}</span>-
+                    <span class="box__info--price">${item.price}</span> грн</p>
+                    <p>калорійність :
+                    <span class="box__info--ccal">${item.ccal}</span> ккал</p>
+                    </div>`
+
+    return template;
+} 
+
+
+function renderAllInfoHamburgers() {
+  // console.log('Hamburger.stuffings: ', Hamburger.stuffings);
+  // console.log('Object.values(Hamburger.stuffings):',Object.values(Hamburger.stuffings));
+  
+  const fullTemplate = Object.values(Hamburger.stuffings)
+    .reduce((acc, item, index) => `${acc} ${createInfoHamburgersTemplate(item, index)}`, '');
+ 
+   infoHamburgersContainer.insertAdjacentHTML('beforeend', fullTemplate);
+
+}
+const infoHamburgersSizeContainer = document.querySelector('.sizes');
+
+function renderSizeHamburgers() {
+   const sizes = Hamburger.sizes;
+  //  console.log('sizes :', sizes);
+    for (const key in sizes) {
+        const fullTemplateSize = `<div class="box__info--sizes ">
+                    <p> Розмір гамбургера:
+                    <span class="box__sizes--name">${key}</span>-
+                    <span class="box__sizes--price">${sizes[key]}</span> грн</p>
+                    </div>`;
+        infoHamburgersSizeContainer.insertAdjacentHTML('beforeend', fullTemplateSize);
+    }
+}
+renderAllInfoHamburgers();
+renderSizeHamburgers();
+
+
+
+
+/*
 const burger = new Hamburger();
 const refs = {
   burgerSize: document.querySelector('.checkbox-variant'),
@@ -302,4 +371,5 @@ console.log('burger stuffings ->', burger.addSize(burger.size));
 // refs.burgerTotalPrice.textContent = 5555;
 
 console.log(burger.calculatePrice());
-refs.burgerTotalCalories.textContent =2;
+refs.burgerTotalCalories.textContent ='2';
+*/
