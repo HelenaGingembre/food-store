@@ -190,6 +190,52 @@ console.log("burger.calculatePrice = ", burger.calculatePrice());
 */
 
 
+
+//1.Створення і рендер розмітки по данных  класу Humburger 
+const infoHamburgersContainer = document.querySelector('.toppings');
+
+function createInfoHamburgersTemplate(item, index) {
+  const { type, price, ccal } =  item ;
+  return `<div class="box__info--topping ">
+                    <p><span class="box__topping--name">${type}</span>-
+                    <span class="box__info--price">${price}</span> грн</p>
+                    <p><span class="box__info--ccal">${ccal}</span> ккал</p>
+                    </div>`;
+} 
+
+
+function renderAllInfoHamburgers() {
+  // console.log('Hamburger.stuffings: ', Hamburger.stuffings);
+  // console.log('Object.values(Hamburger.stuffings):',Object.values(Hamburger.stuffings));
+      const fullTemplate = Object.values(Hamburger.stuffings)
+          .reduce((acc, item, index) => `${acc} ${createInfoHamburgersTemplate(item, index)}`, '');
+      
+      infoHamburgersContainer.insertAdjacentHTML('beforeend', fullTemplate);
+};
+const infoHamburgersSizeContainer = document.querySelector('.sizes');
+
+function renderSizeInfoHamburgers() {
+      // console.log('Hamburger.sizes :', Hamburger.sizes);
+    // console.log('Object.keys(Hamburger.sizes):', Object.keys(Hamburger.sizes));
+  for (const key in Hamburger.sizes) {
+      const fullTemplateSize = createSizesHamburgersTemplate(key);
+      infoHamburgersSizeContainer.insertAdjacentHTML('beforeend', fullTemplateSize);
+  }
+}
+function createSizesHamburgersTemplate(key) {
+  // console.log('Object.keys(item): ', key);
+  // console.log('Object.values(item): ', Hamburger.sizes[key]);
+      return `<div class="box__info--sizes ">
+                    <p><span class="box__sizes--name">${key}</span>-
+                    <span class="box__sizes--price">${Hamburger.sizes[key]}</span> грн</p>
+                    </div>`;
+};
+
+renderAllInfoHamburgers();
+renderSizeInfoHamburgers();
+
+
+//2. створення гамбургеру
 const formCreateBurger = document.querySelector(".form-burger");
 formCreateBurger.addEventListener("submit", onCreateNewBurger);
 
@@ -209,52 +255,6 @@ function onCreateNewBurger(event) {
   event.target.reset();
   
 }
-
-//1.Створення і рендер розмітки по данных  класу Humburger 
-const infoHamburgersContainer = document.querySelector('.toppings');
-
-function createInfoHamburgersTemplate(item, index) {
-
-        const template = `<div class="box__info--topping ">
-                    <p>
-                    <span class="box__topping--name">${item.type}</span>-
-                    <span class="box__info--price">${item.price}</span> грн</p>
-                    <p>калорійність :
-                    <span class="box__info--ccal">${item.ccal}</span> ккал</p>
-                    </div>`
-
-    return template;
-} 
-
-
-function renderAllInfoHamburgers() {
-  // console.log('Hamburger.stuffings: ', Hamburger.stuffings);
-  // console.log('Object.values(Hamburger.stuffings):',Object.values(Hamburger.stuffings));
-  
-  const fullTemplate = Object.values(Hamburger.stuffings)
-    .reduce((acc, item, index) => `${acc} ${createInfoHamburgersTemplate(item, index)}`, '');
- 
-   infoHamburgersContainer.insertAdjacentHTML('beforeend', fullTemplate);
-
-}
-const infoHamburgersSizeContainer = document.querySelector('.sizes');
-
-function renderSizeHamburgers() {
-   const sizes = Hamburger.sizes;
-  //  console.log('sizes :', sizes);
-    for (const key in sizes) {
-        const fullTemplateSize = `<div class="box__info--sizes ">
-                    <p> Розмір гамбургера:
-                    <span class="box__sizes--name">${key}</span>-
-                    <span class="box__sizes--price">${sizes[key]}</span> грн</p>
-                    </div>`;
-        infoHamburgersSizeContainer.insertAdjacentHTML('beforeend', fullTemplateSize);
-    }
-}
-renderAllInfoHamburgers();
-renderSizeHamburgers();
-
-
 
 
 /*

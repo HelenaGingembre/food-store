@@ -18,64 +18,66 @@
   <section class="section">
     <div class="conteiner" id="wrapper">
       <h1 class="section__title">Додаток вибору гамбургеру</h1>
-        <div class="boxes">
-              <div class="box" id="first_box">
-                  <div class="card-header">
-                    <span>створіть свій Бургер</span>
-                  </div>
-                  <div class="boxes">
-                    <form name="add-task" class="form-burger">
-                      <div class="mb-3">
-                        <label for="title" class="form-label">Task title</label>
-                        <input type="text" class="form-control" id="title" name="task-title">
-                      </div>
-                      <div class="mb-3">
-                        <label for="description" class="form-label">Task body</label>
-                        <textarea class="form-control" id="description" name="task-description" rows="3"></textarea>
-                      </div>
-                      <div class="mb-3">
-                        <label for="priority" class="form-label">Burger size</label>
-                        <select class="form-select" id="priority" name="task-priority">
-                          <option selected>Select size</option>
-                          <option value="L">Large</option>
-                          <option value="M">Medium</option>
-                          <option value="S">Small</option>
-                        </select>
-                      </div>
-                      <button type="submit" class="btn btn-primary order-btn">Замовити burger</button>
-                      <button type="reset" class="btn btn-warning ms-2">Reset</button>
-                      <!-- <button type="submit" class="btn order-btn" id="burgerValue" onclick="OrderHamburger()">Замовити Гамбургер</button> -->
-                    </form>
-
-
-
-                  </div>
+        
+          
+            
+    <div class="boxes" >
+          <div class="box" id="first_box">
+                    <div class="boxes">
+                        <form name="add-task" class="form-burger">
+                          <h2>створіть свій Бургер</h2>
+                        
+                          <div class="mb-3">
+                            <label for="size" class="form-label">Size</label>
+                            <input type="text" class="form-control" id="size" name="size">
+                          </div>
+                          <div class="mb-3">
+                            <label for="amount" class="form-label">Amount</label>
+                            <textarea class="form-control" id="amount" name="amount" rows="3"></textarea>
+                          </div>
+                          <div class="mb-3 select-toppings">
+                            <label for="toppings" class="form-label">Toppings</label>
+                            <select class="form-select " id="toppings" name="toppings">
+                              <option selected>Select toppings</option>
+                              <option value="STUFFING_SALAD">STUFFING_SALAD</option>
+                              <option value="STUFFING_POTATO">STUFFING_POTATO</option>
+                              <option value="TOPPING_MAYO">TOPPING_MAYO</option>
+                              <option value="TOPPING_SPICE">TOPPING_SPICE</option>
+                            </select>
+                            <button type="button" class="btn btn-primary btn-add" >+</button>
+                            <button type="button" class="btn btn-primary btn-remove">-</button>
+                          </div>
+                          <button type="submit" class="btn btn-primary order-btn">Замовити burger</button>
+                          <button type="reset" class="btn btn-warning ms-2">Reset</button>
+                          <!-- <button type="submit" class="btn order-btn" id="burgerValue" onclick="OrderHamburger()">Замовити Гамбургер</button> -->
+                        </form>
+                        <div class="create-burger-info">
+                            <div class="box__info--sizes ">
+                              <p> Обраний розмір бургера:
+                                <span class="box__sizes--name">S</span>-
+                                <span class="box__sizes--price">200</span> грн
+                              </p>
+                            </div>
+                            <div class="box__info--sizes ">
+                              <p> Обраний розмір бургера:
+                                <span class="box__sizes--name">S</span>-
+                                <span class="box__sizes--price">200</span> грн
+                              </p>
+                            </div>
+                            <div class="box__info--topping ">
+                          <p> Ви обрали наступні добавки:
+                            <span class="box__topping--name">STUFFING_SALAD</span>-
+                            <span class="box__info--price">300</span> грн
+                          </p>
+                          <p>калорійність :
+                            <span class="box__info--ccal">200</span> ккал
+                          </p>
+                        
+                            </div>
+                        </div>
+                    </div>
+          </div>
                   
-
-                <div class="create-burger-info">
-                  <div class="box__info--sizes ">
-                    <p> Обраний розмір бургера:
-                      <span class="box__sizes--name">S</span>-
-                      <span class="box__sizes--price">200</span> грн
-                    </p>
-                  </div>
-                  <div class="box__info--sizes ">
-                    <p> Обраний розмір бургера:
-                      <span class="box__sizes--name">S</span>-
-                      <span class="box__sizes--price">200</span> грн
-                    </p>
-                  </div>
-                  <div class="box__info--topping ">
-                    <p> Ви обрали наступні добавки:
-                      <span class="box__topping--name">STUFFING_SALAD</span>-
-                      <span class="box__info--price">300</span> грн
-                    </p>
-                    <p>калорійність :
-                      <span class="box__info--ccal">200</span> ккал
-                    </p>
-                  </div>
-
-                </div>
                 <!-- <form action="" class="form-burger" id="form-burger">
                   <h2 class="box__title">Оберить розмір гамбургеру</h2>
                   <div id="burgerSize" class="checkbox-variant">
@@ -87,18 +89,22 @@
                     <p>Ви обрали Гамбургер  <span class="box__info--size"></span> розміру</p>
                   </div>
                 </form> -->
-              </div>
+              
             
         
         
               <div class="box" id="second_box">
-                  <h2 class="box__title">Наявні добавки та розміри бургеру</h2>
-                  <div class="boxes">
-                      <div class="toppings"></div>
-                      <div class="sizes"></div>
-                  </div>
+                    <h2 class="box__title">MENU</h2>
+                    <div class="boxes">
+                        <div class="toppings">
+                          <h4>Toppings</h4>
+                        </div>
+                        <div class="sizes">
+                          <h4>Sizes</h4>
+                        </div>
+                    </div>
               </div>
-        </div>
+    </div>
         
         <div class="boxes" id="counter">
             <div id="counter__price" class="counter">
