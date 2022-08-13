@@ -67,7 +67,8 @@ body {
 }
 .box__info,
 .box__info--topping,
-.box__info--size {
+.box__info--size,
+.box__message--error {
     width: 100%;
     /* margin-top: 5px; */
     /* visibility: hidden; */
@@ -79,6 +80,13 @@ body {
     border: 1px dotted var(--text-color-p);
     padding: 5px;
     text-align: center;
+}
+.create-burger-info {
+    padding: 10px;
+}
+.box__info--sizes,
+.box__message--error {
+    visibility: hidden;
 }
 .box__sizes--name,
 .box__info--price,

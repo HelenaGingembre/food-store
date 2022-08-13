@@ -234,6 +234,7 @@ function createSizesHamburgersTemplate(key) {
 renderAllInfoHamburgers();
 renderSizeInfoHamburgers();
 
+onChoiceBurgerSize();
 
 //2. створення гамбургеру
 const formCreateBurger = document.querySelector(".form-burger");
@@ -246,7 +247,7 @@ function onCreateNewBurger(event) {
 
   console.log('перевірка = створено гамбургер');
   // const formData = new FormData(event.target);
-
+   
   // formData.forEach((value, name) => (newBurger[size] = value));
   // newBurger.stuffings = [];
 
@@ -257,17 +258,44 @@ function onCreateNewBurger(event) {
 };
 
 function onChoiceBurgerSize() {
-  document.querySelector('.box__info--sizec').classList.add('visibility');
-  let result = 0;
-  if (document.querySelector('#S').checked == true) {
-    result = burger.addSize('S');
-    console.log(burger.size);
-      
-  }
-  else if (document.querySelector('#M').checked == true) {
-    result = burger.addSize('M');
-  }
+  
+  let inputSize = document.querySelector("input#size");
+  let outputSize = document.querySelector('.box__sizes--name');
+  let outputPriceSize = document.querySelector('.box__sizes--price');
+
+  const divBoxInfoSizes = document.querySelector('.box__info--sizes');
+  const divBoxMessageError = document.querySelector('.box__message--error');
+  // const burgerSize = '';
+  console.log(Object.keys(Hamburger.sizes));
+ 
+
+  inputSize.addEventListener("input", (event) => {
+    const inputCurrentSizeValue = event.currentTarget.value.toUpperCase();
+    console.log('inputCurrentSizeValue1:',inputCurrentSizeValue);
+    console.log(' element find',Object.keys(Hamburger.sizes).find(elem => elem === inputCurrentSizeValue));
+   
+    if (Object.keys(Hamburger.sizes)
+      .find(elem => elem === inputCurrentSizeValue) != undefined) {
+      divBoxInfoSizes.classList.add('visibility');
+      divBoxMessageError.classList.remove('visibility');
+      outputSize.textContent = inputCurrentSizeValue;
+      console.log('inputCurrentSizeValue 2:',inputCurrentSizeValue);
+      outputPriceSize.textContent = Hamburger.sizes[inputCurrentSizeValue];
+      console.log('outputSize:', outputSize.textContent);
+      console.log('outputPriceSize:', Hamburger.sizes[inputCurrentSizeValue]);
+
+    }
+    else {
+       
+      divBoxInfoSizes.classList.remove('visibility');
+      divBoxMessageError.classList.add('visibility');
+      outputSize.textContent = inputCurrentSizeValue;
+      console.log("Такого розміру не існує в меню.");
+      console.log(outputSize.textContent);
+    }
+  });
 };
+
 
 
 /*
