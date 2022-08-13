@@ -225,7 +225,7 @@ function renderSizeInfoHamburgers() {
 function createSizesHamburgersTemplate(key) {
   // console.log('Object.keys(item): ', key);
   // console.log('Object.values(item): ', Hamburger.sizes[key]);
-      return `<div class="box__info--sizes ">
+      return `<div class="box-menu__info--sizes ">
                     <p><span class="box__sizes--name">${key}</span>-
                     <span class="box__sizes--price">${Hamburger.sizes[key]}</span> грн</p>
                     </div>`;
@@ -266,32 +266,26 @@ function onChoiceBurgerSize() {
   const divBoxInfoSizes = document.querySelector('.box__info--sizes');
   const divBoxMessageError = document.querySelector('.box__message--error');
   // const burgerSize = '';
-  console.log(Object.keys(Hamburger.sizes));
  
-
   inputSize.addEventListener("input", (event) => {
     const inputCurrentSizeValue = event.currentTarget.value.toUpperCase();
-    console.log('inputCurrentSizeValue1:',inputCurrentSizeValue);
-    console.log(' element find',Object.keys(Hamburger.sizes).find(elem => elem === inputCurrentSizeValue));
    
     if (Object.keys(Hamburger.sizes)
       .find(elem => elem === inputCurrentSizeValue) != undefined) {
       divBoxInfoSizes.classList.add('visibility');
       divBoxMessageError.classList.remove('visibility');
       outputSize.textContent = inputCurrentSizeValue;
-      console.log('inputCurrentSizeValue 2:',inputCurrentSizeValue);
       outputPriceSize.textContent = Hamburger.sizes[inputCurrentSizeValue];
-      console.log('outputSize:', outputSize.textContent);
-      console.log('outputPriceSize:', Hamburger.sizes[inputCurrentSizeValue]);
+      
 
     }
     else {
        
       divBoxInfoSizes.classList.remove('visibility');
       divBoxMessageError.classList.add('visibility');
-      outputSize.textContent = inputCurrentSizeValue;
+      document.querySelector('.box__sizes--name-error').textContent = inputCurrentSizeValue;
       console.log("Такого розміру не існує в меню.");
-      console.log(outputSize.textContent);
+      
     }
   });
 };

@@ -68,6 +68,7 @@ body {
 .box__info,
 .box__info--topping,
 .box__info--size,
+.box-menu__info--sizes,
 .box__message--error {
     width: 100%;
     /* margin-top: 5px; */
@@ -90,7 +91,8 @@ body {
 }
 .box__sizes--name,
 .box__info--price,
-.box__info--ccal {
+.box__info--ccal,
+.box__sizes--name-error {
     font-weight: 700;
 }
 .visibility {
