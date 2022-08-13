@@ -254,7 +254,20 @@ function onCreateNewBurger(event) {
 //обнуляємо форму після підтвердження замовлення гамбургеру
   event.target.reset();
   
-}
+};
+
+function onChoiceBurgerSize() {
+  document.querySelector('.box__info--sizec').classList.add('visibility');
+  let result = 0;
+  if (document.querySelector('#S').checked == true) {
+    result = burger.addSize('S');
+    console.log(burger.size);
+      
+  }
+  else if (document.querySelector('#M').checked == true) {
+    result = burger.addSize('M');
+  }
+};
 
 
 /*

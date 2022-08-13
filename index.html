@@ -33,22 +33,22 @@
                           </div>
                           <div class="mb-3">
                             <label for="amount" class="form-label">Amount</label>
-                            <textarea class="form-control" id="amount" name="amount" rows="3"></textarea>
+                            <input type="number" min="1" step="1" class="form-control" id="amount" name="amount" ></input>
                           </div>
                           <div class="mb-3 select-toppings">
-                            <label for="toppings" class="form-label">Toppings</label>
-                            <select class="form-select " id="toppings" name="toppings">
+                            <label for="toppings-select" class="form-label">Toppings</label>
+                            <select class="form-select " id="toppings-select" name="toppings">
                               <option selected>Select toppings</option>
                               <option value="STUFFING_SALAD">STUFFING_SALAD</option>
                               <option value="STUFFING_POTATO">STUFFING_POTATO</option>
                               <option value="TOPPING_MAYO">TOPPING_MAYO</option>
                               <option value="TOPPING_SPICE">TOPPING_SPICE</option>
                             </select>
-                            <button type="button" class="btn btn-primary btn-add" >+</button>
-                            <button type="button" class="btn btn-primary btn-remove">-</button>
+                            <button type="button" class="btn btn-primary btn-add" data-create >+</button>
+                            <button type="button" class="btn btn-primary btn-remove" data-destroy>-</button>
                           </div>
                           <button type="submit" class="btn btn-primary order-btn">Замовити burger</button>
-                          <button type="reset" class="btn btn-warning ms-2">Reset</button>
+                          <!-- <button type="reset" class="btn btn-warning ms-2">Reset</button> -->
                           <!-- <button type="submit" class="btn order-btn" id="burgerValue" onclick="OrderHamburger()">Замовити Гамбургер</button> -->
                         </form>
                         <div class="create-burger-info">
@@ -58,7 +58,7 @@
                                 <span class="box__sizes--price">200</span> грн
                               </p>
                             </div>
-                            <div class="box__info--sizes ">
+                            <div class="box__info--sizes">
                               <p> Обраний розмір бургера:
                                 <span class="box__sizes--name">S</span>-
                                 <span class="box__sizes--price">200</span> грн
@@ -126,3 +126,98 @@
 </body>
 
 </html>
+<!--
+  <body>
+  <section class="section">
+    <div class="conteiner" id="wrapper">
+      <h1 class="section__title">Додаток вибору гамбургеру</h1>
+        <div class="boxes">
+              <div class="box" id="first_box">
+                <form action="" class="form-burger" id="form-burger">
+                  <h2 class="box__title">Оберить розмір гамбургеру</h2>
+                  <div id="burgerSize" class="checkbox-variant">
+                    <input class="size" type="radio" name="size" id="S">S<br>
+                    <input class="size" type="radio" name="size" id="M">M<br>
+                    <input class="size" type="radio" name="size" id="L">L<br>
+                  </div>
+                  <div class="box__info">
+                    <p>Ви обрали Гамбургер  <span class="box__info--size"></span> розміру</p>
+                  </div>
+                </form>
+              </div>
+            
+        
+        
+              <div class="box" id="second_box">
+                  <h2 class="box__title">Що хочете додати?</h2>
+                  <div class="boxes">
+                      <div class="toppings"> <div class="box__info--topping ">
+                    <p>
+                    <span class="box__topping--name">STUFFING_SALAD</span>-
+                    <span class="box__info--price">300</span> грн</p>
+                    <p>калорійність :
+                    <span class="box__info--ccal">200</span> ккал</p>
+                    </div> <div class="box__info--topping ">
+                    <p>
+                    <span class="box__topping--name">STUFFING_POTATO</span>-
+                    <span class="box__info--price">400</span> грн</p>
+                    <p>калорійність :
+                    <span class="box__info--ccal">100</span> ккал</p>
+                    </div> <div class="box__info--topping ">
+                    <p>
+                    <span class="box__topping--name">TOPPING_MAYO</span>-
+                    <span class="box__info--price">300</span> грн</p>
+                    <p>калорійність :
+                    <span class="box__info--ccal">400</span> ккал</p>
+                    </div> <div class="box__info--topping ">
+                    <p>
+                    <span class="box__topping--name">TOPPING_SPICE</span>-
+                    <span class="box__info--price">500</span> грн</p>
+                    <p>калорійність :
+                    <span class="box__info--ccal">700</span> ккал</p>
+                    </div></div>
+                      <div class="sizes"><div class="box__info--sizes ">
+                    <p> Розмір гамбургера:
+                    <span class="box__sizes--name">S</span>-
+                    <span class="box__sizes--price">200</span> грн</p>
+                    </div><div class="box__info--sizes ">
+                    <p> Розмір гамбургера:
+                    <span class="box__sizes--name">L</span>-
+                    <span class="box__sizes--price">300</span> грн</p>
+                    </div><div class="box__info--sizes ">
+                    <p> Розмір гамбургера:
+                    <span class="box__sizes--name">M</span>-
+                    <span class="box__sizes--price">400</span> грн</p>
+                    </div></div>
+                          <select class="topping-select-1">
+                            <option value="STUFFING_SALAD">STUFFING_SALAD</option>
+                            <option value="STUFFING_POTATO">STUFFING_POTATO</option>
+                            <option value="TOPPING_MAYO">TOPPING_MAYO</option>
+                            <option value="TOPPING_SPICE">TOPPING_SPICE</option>
+                          </select>
+                  </div>
+              </div>
+        </div>
+        
+        <div class="boxes" id="counter">
+            <div id="counter__price" class="counter">
+                <p>Вартість вашого гамбургеру:</p>
+                <span id="burgerTotalPrice"></span><span>грн</span>
+                
+            </div>
+            <div id="counter__cal" class="counter">
+                <p>Всього   калорій:</p>
+                <span id="burgerEnergy"></span><span> ккал</span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn order-btn" id="burgerValue" onclick="OrderHamburger()">Замовити Гамбургер</button>
+      
+    </div>
+  </section>
+
+  <script src="./js/index.js" type="module"></script>
+
+
+</body>
+-->
