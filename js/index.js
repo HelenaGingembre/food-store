@@ -234,9 +234,59 @@ function createSizesHamburgersTemplate(key) {
 renderAllInfoHamburgers();
 renderSizeInfoHamburgers();
 
+
+
+//2. обрати розмір бургеру та перевірити чи є такий розмір
+let inputSize = document.querySelector("input#size");
+let outputSize = document.querySelector('.box__sizes--name');
+let outputPriceSize = document.querySelector('.box__sizes--price');
+const divBoxInfoSizes = document.querySelector('.box__info--sizes');
+const divBoxMessageError = document.querySelector('.box__message--error');
+let inputAmount = document.querySelector("input#amount");
+let outputAmount = document.querySelector(".box__sizes--count");
+outputAmount.textContent = 1;
+  
+function onChoiceBurgerSize() {
+  // const burgerSize = '';
+ 
+  inputSize.addEventListener("input", (event) => {
+    const inputCurrentSizeValue = event.currentTarget.value.toUpperCase();
+   
+    if (Object.keys(Hamburger.sizes)
+      .find(elem => elem === inputCurrentSizeValue) != undefined) {
+            divBoxInfoSizes.classList.add('visibility');
+            divBoxMessageError.classList.remove('visibility');
+            outputSize.textContent = '';
+            outputSize.textContent = inputCurrentSizeValue;
+            outputPriceSize.textContent = Hamburger.sizes[inputCurrentSizeValue];
+            outputAmount.textContent = 1;
+    }
+    else {
+            divBoxInfoSizes.classList.remove('visibility');
+            divBoxMessageError.classList.add('visibility');
+            document.querySelector('.box__sizes--name-error').textContent = inputCurrentSizeValue;
+            console.log("Такого розміру не існує в меню.");
+    }
+    inputSize.removeEventListener("input", onChoiceBurgerSize());
+  });
+  
+};
+
 onChoiceBurgerSize();
 
-//2. створення гамбургеру
+// 3. обрання кількості гамбургерів для замовлення
+function onChoiceBurgerAmount() { 
+  inputAmount.addEventListener("input", (event) => {
+    outputAmount.textContent = event.currentTarget.value;
+    // amount = event.currentTarget.value;
+    outputPriceSize.textContent = Number(Hamburger.sizes[outputSize.textContent])*event.currentTarget.value;
+    //TODO --- виправити розрахунок вартості після зміни розміру
+    inputAmount.removeEventListener("input", onChoiceBurgerAmount());
+  });
+};
+
+onChoiceBurgerAmount();
+//4. створення гамбургеру
 const formCreateBurger = document.querySelector(".form-burger");
 formCreateBurger.addEventListener("submit", onCreateNewBurger);
 
@@ -256,41 +306,6 @@ function onCreateNewBurger(event) {
   event.target.reset();
   
 };
-
-function onChoiceBurgerSize() {
-  
-  let inputSize = document.querySelector("input#size");
-  let outputSize = document.querySelector('.box__sizes--name');
-  let outputPriceSize = document.querySelector('.box__sizes--price');
-
-  const divBoxInfoSizes = document.querySelector('.box__info--sizes');
-  const divBoxMessageError = document.querySelector('.box__message--error');
-  // const burgerSize = '';
- 
-  inputSize.addEventListener("input", (event) => {
-    const inputCurrentSizeValue = event.currentTarget.value.toUpperCase();
-   
-    if (Object.keys(Hamburger.sizes)
-      .find(elem => elem === inputCurrentSizeValue) != undefined) {
-      divBoxInfoSizes.classList.add('visibility');
-      divBoxMessageError.classList.remove('visibility');
-      outputSize.textContent = inputCurrentSizeValue;
-      outputPriceSize.textContent = Hamburger.sizes[inputCurrentSizeValue];
-      
-
-    }
-    else {
-       
-      divBoxInfoSizes.classList.remove('visibility');
-      divBoxMessageError.classList.add('visibility');
-      document.querySelector('.box__sizes--name-error').textContent = inputCurrentSizeValue;
-      console.log("Такого розміру не існує в меню.");
-      
-    }
-  });
-};
-
-
 
 /*
 const burger = new Hamburger();
