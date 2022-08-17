@@ -36,8 +36,8 @@
                           </div>
                           <div class="mb-3 select-toppings">
                             <label for="toppings-select" class="form-label">Toppings</label>
-                            <select class="form-select " id="toppings-select" name="toppings">
-                              <option selected>Select toppings</option>
+                            <select class="form-select toppings-select" id="toppings-select" name="toppings">
+                              <!-- <option selected>Select toppings</option> -->
                               <option value="STUFFING_SALAD">STUFFING_SALAD</option>
                               <option value="STUFFING_POTATO">STUFFING_POTATO</option>
                               <option value="TOPPING_MAYO">TOPPING_MAYO</option>
@@ -64,14 +64,20 @@
                                 розміру не існує в меню.
                               </p>
                             </div>
-                            <div class="box__info--topping ">
-                          <p> Ви обрали наступні добавки:
-                            <span class="box__topping--name">STUFFING_SALAD</span>-
-                            <span class="box__info--price">300</span> грн
-                          </p>
-                          <p>калорійність :
-                            <span class="box__info--ccal">200</span> ккал
-                          </p>
+                            <div class="box__info--topping">
+                              <ul class="toppings-list">
+                                  <li class="toppings-list--item">
+                                        <p>додано добавкy:
+                                          <span class="toppings-item--name"></span>-
+                                          <span class="toppings-item--price"></span> грн
+                                        </p>
+                                        <p>калорійність :
+                                          <span class="toppings-item--ccal"></span> ккал
+                                        </p>
+                                  </li>
+
+                              </ul>
+                                    
                         
                             </div>
                         </div>
@@ -96,8 +102,11 @@
               <div class="box" id="second_box">
                     <h2 class="box__title">MENU</h2>
                     <div class="boxes">
-                        <div class="toppings">
+                        <div >
                           <h4>Toppings</h4>
+                          <ul class="list toppings">
+
+                          </ul>
                         </div>
                         <div class="sizes">
                           <h4>Sizes</h4>

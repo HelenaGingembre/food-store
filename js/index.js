@@ -196,11 +196,11 @@ const infoHamburgersContainer = document.querySelector('.toppings');
 
 function createInfoHamburgersTemplate(item, index) {
   const { type, price, ccal } =  item ;
-  return `<div class="box__info--topping ">
+  return `<li class="box__info--topping ">
                     <p><span class="box__topping--name">${type}</span>-
                     <span class="box__info--price">${price}</span> грн</p>
                     <p><span class="box__info--ccal">${ccal}</span> ккал</p>
-                    </div>`;
+          </li>`;
 } 
 
 
@@ -284,8 +284,67 @@ function onChoiceBurgerAmount() {
     inputAmount.removeEventListener("input", onChoiceBurgerAmount());
   });
 };
-
 onChoiceBurgerAmount();
+
+
+// 3. обрання начинки гамбургерів для замовлення
+const selectTopping = document.querySelector("#toppings-select");
+  const listToppings = document.querySelector(".toppings-list");
+  const textToppingOutput = document.querySelector(".toppings-item--name");
+  const valueToppingOutputPrice = document.querySelector(".toppings-item--price");
+
+function onChoiceBurgerToppings() { 
+  
+
+  
+  selectTopping.addEventListener("change", setOutputTopping);
+
+  
+};
+
+function setOutputTopping() {
+  document.querySelector('.box__info--topping').classList.add('visibility');
+  console.log(selectTopping.value);
+  const selectedOptionValue = selectTopping.value;
+
+  //todo  ниже код переписать - новая логика!!!!!!!!!
+
+
+
+  // const selectedOptionIndex = selectTopping.selectedIndex;
+  // const selectedOptionText = selectTopping.options[selectedOptionIndex].text;
+
+  // textToppingOutput.textContent = selectedOptionText;
+  valueToppingOutput.textContent = selectedOptionValue;
+
+  if (Object.keys(Hamburger.stuffings).includes(selectedOptionValue) ){
+    console.log(Hamburger.stuffings[selectedOptionValue].price);
+     valueToppingOutputPrice.textContent = Hamburger.stuffings[selectedOptionValue].price;
+   }
+  else {
+      valueToppingOutputPrice.textContent = "error! Немає такої добавки" 
+  }
+
+  createInfoHamburgersTemplate(selectedOptionValue, index);
+  newBurger.addTopping(selectedOptionValue);
+  console.log(newBurger.toppings);
+};
+
+
+
+function onRenderToppingsList(topping, index) { // cм функцию createInfoHamburgersTemplate(item, index)
+   const { type, price, ccal } =  topping ;
+  return `<li class="toppings-list--item">
+             <p>додано добавкy:
+                <span class="toppings-item--name">${type}</span>-
+                <span class="toppings-item--price">${price}</span> грн
+             </p>
+             <p>калорійність :
+                <span class="toppings-item--ccal">${ccal}</span> ккал
+             </p>
+          </li>`;
+}
+onChoiceBurgerToppings();
 //4. створення гамбургеру
 const formCreateBurger = document.querySelector(".form-burger");
 formCreateBurger.addEventListener("submit", onCreateNewBurger);
@@ -303,10 +362,10 @@ function onCreateNewBurger(event) {
 
   
 //обнуляємо форму після підтвердження замовлення гамбургеру
-  event.target.reset();
+  event.currentTarget.reset();
   
 };
-
+ 
 /*
 const burger = new Hamburger();
 const refs = {
